@@ -129,7 +129,7 @@ class Pages extends dbJSON
 		}
 
 		// Schedule page
-		if (($row['date'] > Date::current(DB_DATE_FORMAT)) && ($row['type'] == 'published')) {
+		if (($row['date']>Date::current(DB_DATE_FORMAT)) && ($row['type']=='published')) {
 			$row['type'] = 'scheduled';
 		}
 

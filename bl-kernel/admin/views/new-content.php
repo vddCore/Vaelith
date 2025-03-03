@@ -48,7 +48,7 @@ echo Bootstrap::formInputHidden(array(
 	</div>
 
 	<div id="jseditorToolbarLeft">
-		<button id="jsbuttonSave" type="button" class="btn btn-sm btn-primary"><?php $L->p('Save') ?></button>
+		<button id="jsbuttonSave" type="button" class="btn btn-sm btn-primary" ><?php $L->p('Save') ?></button>
 		<button id="jsbuttonPreview" type="button" class="btn btn-sm btn-secondary"><?php $L->p('Preview') ?></button>
 		<span id="jsbuttonSwitch" data-switch="publish" class="ml-2 text-secondary switch-button"><i class="fa fa-square switch-icon-publish"></i> <?php $L->p('Publish') ?></span>
 	</div>
@@ -126,7 +126,7 @@ echo Bootstrap::formInputHidden(array(
 
 					$("#jsbuttonRemoveCoverImage").on("click", function() {
 						$("#jscoverImage").val('');
-						$("#jscoverImagePreview").attr('src', HTML_PATH_CORE_IMG + 'default.svg');
+						$("#jscoverImagePreview").attr('src', HTML_PATH_CORE_IMG+'default.svg');
 					});
 				});
 			</script>

@@ -7,8 +7,6 @@ if (Session::started()===false) {
 	exit('Bludit CMS. Session initialization failed.');
 }
 
-$login = new Login();
-
 $layout = array(
 	'controller'=>null,
 	'view'=>null,

@@ -1,6 +1,6 @@
 <?php
 
-echo Bootstrap::pageTitle(array('title'=>$L->g('Content'), 'icon'=>'archive'));
+echo Bootstrap::pageTitle(array('title'=>$L->g('Content'), 'icon'=>'folder'));
 
 function table($type) {
 	global $url;
@@ -81,7 +81,7 @@ function table($type) {
 					echo '<tr>
 					<td>
 						<div>
-							<a style="font-size: 1.1em" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$page->key().'">'
+							<a style="font-size: 1.1em" title="'.$page->title().'" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$page->key().'">'
 							.($page->title()?$page->title():'<span class="label-empty-title">'.$L->g('Empty title').'</span> ')
 							.'</a>
 						</div>
@@ -96,10 +96,10 @@ function table($type) {
 					}
 
 					echo '<td class="contentTools pt-3 text-center d-sm-table-cell">'.PHP_EOL;
-					echo '<a class="text-secondary d-none d-md-inline" target="_blank" href="'.$page->permalink().'"><i class="fa fa-desktop"></i>'.$L->g('View').'</a>'.PHP_EOL;
-					echo '<a class="text-secondary d-none d-md-inline ml-2" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$page->key().'"><i class="fa fa-edit"></i>'.$L->g('Edit').'</a>'.PHP_EOL;
+					echo '<a class="button-view" target="_blank" href="'.$page->permalink().'"><i class="fa fa-desktop"></i></a>'.PHP_EOL;
+					echo '<a class="button-edit" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$page->key().'"><i class="fa fa-edit"></i></a>'.PHP_EOL;
 					if (count($page->children())==0) {
-						echo '<a href="#" class="ml-2 text-danger deletePageButton d-block d-sm-inline" data-toggle="modal" data-target="#jsdeletePageModal" data-key="'.$page->key().'"><i class="fa fa-trash"></i>'.$L->g('Delete').'</a>'.PHP_EOL;
+						echo '<a href="#" class="button-delete" data-toggle="modal" data-target="#jsdeletePageModal" data-key="'.$page->key().'"><i class="fa fa-trash"></i></a>'.PHP_EOL;
 					}
 					echo '</td>';
 
@@ -126,10 +126,10 @@ function table($type) {
 
 						echo '<td class="contentTools pt-3 text-center d-sm-table-cell">'.PHP_EOL;
 						if ($type=='published' || $type=='static' || $type=='sticky') {
-						echo '<a class="text-secondary d-none d-md-inline" target="_blank" href="'.$child->permalink().'"><i class="fa fa-desktop"></i>'.$L->g('View').'</a>'.PHP_EOL;
+						echo '<a class="text-secondary d-none d-md-inline" target="_blank" href="'.$child->permalink().'"><i class="fa fa-desktop"></i></a>'.PHP_EOL;
 						}
-						echo '<a class="text-secondary d-none d-md-inline ml-2" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$child->key().'"><i class="fa fa-edit"></i>'.$L->g('Edit').'</a>'.PHP_EOL;
-						echo '<a class="ml-2 text-danger deletePageButton d-block d-sm-inline" href="#" data-toggle="modal" data-target="#jsdeletePageModal" data-key="'.$child->key().'"><i class="fa fa-trash"></i>'.$L->g('Delete').'</a>'.PHP_EOL;
+						echo '<a class="text-secondary d-none d-md-inline ml-2" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$child->key().'"><i class="fa fa-edit"></i></a>'.PHP_EOL;
+						echo '<a class="ml-2 text-danger deletePageButton d-block d-sm-inline" href="#" data-toggle="modal" data-target="#jsdeletePageModal" data-key="'.$child->key().'"><i class="fa fa-trash"></i></a>'.PHP_EOL;
 						echo '</td>';
 
 						echo '</tr>';
@@ -158,16 +158,16 @@ function table($type) {
 
 				if ($type=='published' || $type=='static' || $type=='sticky') {
 				$friendlyURL = Text::isEmpty($url->filters('page')) ? '/'.$page->key() : '/'.$url->filters('page').'/'.$page->key();
-				echo '<td class="pt-3 d-none d-lg-table-cell"><a target="_blank" href="'.$page->permalink().'">'.$friendlyURL.'</a></td>';
+				echo '<td class="pt-3 d-none d-lg-table-cell"><a target="_blank" title="'.$friendlyURL.'" href="'.$page->permalink().'">'.$friendlyURL.'</a></td>';
 				}
 
 				echo '<td class="contentTools pt-3 text-center d-sm-table-cell">'.PHP_EOL;
 				if ($type=='published' || $type=='static' || $type=='sticky') {
-				echo '<a class="text-secondary d-none d-md-inline" target="_blank" href="'.$page->permalink().'"><i class="fa fa-desktop"></i>'.$L->g('View').'</a>'.PHP_EOL;
+				echo '<a class="text-secondary d-none d-md-inline" target="_blank" href="'.$page->permalink().'"><i class="fa fa-desktop"></i></a>'.PHP_EOL;
 				}
-				echo '<a class="text-secondary d-none d-md-inline ml-2" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$page->key().'"><i class="fa fa-edit"></i>'.$L->g('Edit').'</a>'.PHP_EOL;
+				echo '<a class="text-secondary d-none d-md-inline ml-2" href="'.HTML_PATH_ADMIN_ROOT.'edit-content/'.$page->key().'"><i class="fa fa-edit"></i></a>'.PHP_EOL;
 				if (count($page->children())==0) {
-					echo '<a href="#" class="ml-2 text-danger deletePageButton d-block d-sm-inline" data-toggle="modal" data-target="#jsdeletePageModal" data-key="'.$page->key().'"><i class="fa fa-trash"></i>'.$L->g('Delete').'</a>'.PHP_EOL;
+					echo '<a href="#" class="ml-2 text-danger deletePageButton d-block d-sm-inline" data-toggle="modal" data-target="#jsdeletePageModal" data-key="'.$page->key().'"><i class="fa fa-trash"></i></a>'.PHP_EOL;
 				}
 				echo '</td>';
 
@@ -209,7 +209,7 @@ function table($type) {
 	</li>
 	<?php endif; ?>
 </ul>
-<div class="tab-content">
+<div class="content-page tab-content">
 	<!-- TABS PAGES -->
 	<div class="tab-pane show active" id="pages" role="tabpanel">
 

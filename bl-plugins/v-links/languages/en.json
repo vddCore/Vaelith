@@ -1,0 +1,8 @@
+{
+	"plugin-data":
+	{
+		"name": "vLinks",
+		"description": "Stores a link list that a theme can then utilize."
+	},
+	"add-a-new-link": "Add a new link"
+}

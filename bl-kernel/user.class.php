@@ -196,4 +196,5 @@ class User
 
 		return json_encode($tmp);
 	}
+
 }
