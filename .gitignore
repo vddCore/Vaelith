@@ -1,6 +1,10 @@
+.editorconfig
+.well-known/
 .idea/
 .DS_Store
 dbgenerator.php
 bl-content/*
 !bl-content/.keep
 bl-content-migrator
+uploads/
+PAIN.jpg

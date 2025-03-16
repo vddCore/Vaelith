@@ -4,11 +4,15 @@
 
 echo Bootstrap::pageTitle(array('title'=>$L->g('Users'), 'icon'=>'users'));
 
-echo Bootstrap::link(array(
-	'title'=>$L->g('add-a-new-user'),
-	'href'=>HTML_PATH_ADMIN_ROOT.'new-user',
-	'icon'=>'plus'
-));
+echo '
+<div class="users-page">
+';
+
+echo '
+<div class="toolbar">
+	<a class="add-new-button" href="'.HTML_PATH_ADMIN_ROOT.'new-user"><i class="fa fa-plus"></i><span class="label">'.$L->g('add-a-new-user').'</span></a>
+</div>
+';
 
 echo '
 <table class="table table-striped mt-3">
@@ -30,7 +34,7 @@ foreach ($list as $username) {
 	try {
 		$user = new User($username);
 		echo '<tr>';
-		echo '<td><img class="profilePicture mr-1" alt="" src="'.(Sanitize::pathFile(PATH_UPLOADS_PROFILES.$user->username().'.png')?DOMAIN_UPLOADS_PROFILES.$user->username().'.png':HTML_PATH_CORE_IMG.'default.svg').'" /><a href="'.HTML_PATH_ADMIN_ROOT.'edit-user/'.$username.'">'.$username.'</a></td>';
+		echo '<td class="user-with-picture"><img class="profilePicture mr-1" alt="" src="'.(Sanitize::pathFile(PATH_UPLOADS_PROFILES.$user->username().'.png')?DOMAIN_UPLOADS_PROFILES.$user->username().'.png':HTML_PATH_CORE_IMG.'default.svg').'" /><a href="'.HTML_PATH_ADMIN_ROOT.'edit-user/'.$username.'">'.$username.'</a></td>';
 		echo '<td class="d-none d-lg-table-cell">'.$user->nickname().'</td>';
 		echo '<td>'.$user->email().'</td>';
 		echo '<td>'.($user->enabled()?'<b>'.$L->g('Enabled').'</b>':$L->g('Disabled')).'</td>';
@@ -51,6 +55,7 @@ foreach ($list as $username) {
 }
 
 echo '
-	</tbody>
-</table>
+		</tbody>
+	</table>
+</div>
 ';

@@ -2,7 +2,7 @@
 <ul class="nav flex-column pt-4">
 
 	<li class="nav-item" style="margin-left: -4px;">
-		<span class="nav-title">CONTROL PANEL</span>
+		<span class="nav-title">CONTROL CENTER</span>
 	</li>
 
 	<li class="nav-item">
