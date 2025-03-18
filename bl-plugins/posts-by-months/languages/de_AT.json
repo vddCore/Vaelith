@@ -1,0 +1,10 @@
+{
+	"plugin-data":
+	{
+		"name": "Posts by months",
+		"description": "Beiträge geordnet nach Jahren und Monaten (für Themes mit einer Seitenleiste)."
+	},
+	"home-link": "Hauptseite",
+	"show-the-home-link-on-the-sidebar": "Link zur Hauptseite",
+	"amount-of-items": "Anzahl Beiträge"
+}

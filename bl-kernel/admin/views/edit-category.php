@@ -4,8 +4,8 @@
 
 <div class="align-middle">
 	<div class="float-right mt-1">
+		<button type="button" class="btn btn-danger btn-sm mr-2" data-toggle="modal" data-target="#jsdeleteModal"><?php $L->p('Delete') ?></button>
 		<button type="submit" class="btn btn-primary btn-sm" name="save"><?php $L->p('Save') ?></button>
-		<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#jsdeleteModal"><?php $L->p('Delete') ?></button>
 		<a class="btn btn-secondary btn-sm" href="<?php echo HTML_PATH_ADMIN_ROOT.'dashboard' ?>" role="button"><?php $L->p('Cancel') ?></a>
 	</div>
 	<?php echo Bootstrap::pageTitle(array('title'=>$L->g('Edit Category'), 'icon'=>'cog')); ?>

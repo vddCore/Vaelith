@@ -10,7 +10,7 @@ echo '
 
 echo '
 <div class="toolbar">
-	<a class="add-new-button" href="'.HTML_PATH_ADMIN_ROOT.'new-user"><i class="fa fa-plus"></i><span class="label">'.$L->g('add-a-new-user').'</span></a>
+	<a class="toolbar-primary-button" href="'.HTML_PATH_ADMIN_ROOT.'new-user"><i class="fa fa-plus"></i><span class="label">'.$L->g('add-a-new-user').'</span></a>
 </div>
 ';
 

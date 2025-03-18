@@ -1,6 +1,7 @@
 :root {
   --main-background: #0f0213;
   --main-foreground: #cfaee9;
+  --list-bullet-foreground: #ff88ff99;
   --block-background: #200529;
   --block-foreground: #aa88c4;
   --navbar-background: #5c116e99;
@@ -9,9 +10,11 @@
   --navbar-link: #e473e4;
   --navbar-link-hover: #ff88ff;
   --navbar-separator: #73e4af;
-  --table-border: #2f093b;
+  --table-border: #aa88c4;
   --table-header-background: #cfaee9;
   --table-header-foreground: #1e0725;
+  --table-background: #0f0213;
+  --table-even-row-background: #200529;
   --link: #ee77ee;
   --link-shadow: #ff88ff88;
   --link-visited: #ee77ee;

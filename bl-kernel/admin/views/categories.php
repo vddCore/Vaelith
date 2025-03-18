@@ -8,7 +8,7 @@ echo '
 
 echo '
 <div class="toolbar">
-	<a class="add-new-button" href="'.HTML_PATH_ADMIN_ROOT.'new-category"><i class="fa fa-plus"></i> <span class="label">'.$L->g('Add a new category').'</span></a>
+	<a class="toolbar-primary-button" href="'.HTML_PATH_ADMIN_ROOT.'new-category"><i class="fa fa-plus"></i> <span class="label">'.$L->g('Add a new category').'</span></a>
 </div>
 ';
 

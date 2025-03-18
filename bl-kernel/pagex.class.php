@@ -77,7 +77,7 @@ class Page {
 
 		// Parse Markdown
 		if (MARKDOWN_PARSER) {
-			$parsedown = new Parsedown();
+			$parsedown = new ParsedownExtended();
 			$content = $parsedown->text($content);
 		}
 

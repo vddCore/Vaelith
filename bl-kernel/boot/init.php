@@ -99,6 +99,8 @@ include(PATH_KERNEL . 'user.class.php');
 include(PATH_KERNEL . 'url.class.php');
 include(PATH_KERNEL . 'login.class.php');
 include(PATH_KERNEL . 'parsedown.class.php');
+include(PATH_KERNEL . 'parsedown.extra.class.php');
+include(PATH_KERNEL . 'parsedown.extended.class.php');
 include(PATH_KERNEL . 'security.class.php');
 
 // Include functions
@@ -121,10 +123,6 @@ include(PATH_HELPERS . 'image.class.php');
 include(PATH_HELPERS . 'tcp.class.php');
 include(PATH_HELPERS . 'dom.class.php');
 include(PATH_HELPERS . 'cookie.class.php');
-
-if (file_exists(PATH_KERNEL . 'bludit.pro.php')) {
-	include(PATH_KERNEL . 'bludit.pro.php');
-}
 
 // Objects
 $pages 		= new Pages();

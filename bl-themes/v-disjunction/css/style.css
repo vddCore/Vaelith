@@ -36,7 +36,8 @@ img {
     max-width: 100%;
 }
 
-pre, code {
+pre,
+code {
     background: var(--block-background);
     color: var(--block-foreground);
 }
@@ -66,11 +67,17 @@ code {
 }
 
 table {
+    background-color: var(--table-background);
     empty-cells: show;
     border: 1px solid var(--table-border);
     width: 100%;
     font-size: 1.2em;
     margin-bottom: 0.3rem;
+    border-collapse: separate;
+    border-spacing: 0px !important;
+    border-radius: 4px;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 thead {
@@ -86,7 +93,17 @@ tr {
     border-color: inherit;
 }
 
-th, td {
+tr:nth-child(even) {
+    background-color: var(--table-even-row-background);
+}
+
+th {
+    border-radius: 4px 4px 0px 0px;
+    line-height: 1rem;
+}
+
+th,
+td {
     padding: 0.5em 1em;
 }
 
@@ -94,6 +111,11 @@ a {
     color: var(--link);
     text-decoration: none;
     transition: color .15s ease-in-out, text-shadow .15s ease-in-out;
+}
+
+hr {
+    color: var(--main-foreground);
+    border-top: 1px dotted var(--main-foreground);
 }
 
 a:visited {
@@ -175,7 +197,12 @@ a.btn,
     box-shadow: none !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     border-left: 4px solid var(--header-border);
     padding-left: 8px;
     padding-bottom: 2px;
@@ -194,6 +221,85 @@ h3.title {
     border: none;
     font-size: 1.4rem;
 }
+
+ul, ol {
+    font-size: 1.1rem;
+    margin: 0 0.25rem;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li::before {
+    display: inline-block;
+    content: '⮞';
+    color: var(--list-bullet-foreground);
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+ol {
+    list-style: upper-roman;
+    padding-left: 1.25rem;
+}
+
+ol > li > ol {
+    list-style: decimal !important;
+    padding-left: 1.25rem;
+}
+
+ol > li > ol > li > ol {
+    list-style: lower-latin !important;
+    padding-left: 1.25rem;
+}
+
+ol > li > ol > li > ol > li > ol {
+    list-style: lower-greek !important;
+    padding-left: 1.25rem;
+}
+
+ol > li > ol > li > ol > li > ol > li > ol {
+    list-style: armenian !important;
+    padding-left: 1.25rem;
+}
+
+ol li::marker {
+    color: var(--list-bullet-foreground);
+}
+
+ul:has(.task-list-item) li:has(.task-list-item)::before {
+    display: none;
+}
+
+span.task-list-item {
+    margin-left: -1px !important;
+}
+
+span.task-list-item::before {
+	color: #ff88ff99;
+	content: '☐' !important;
+    padding-right: 6px !important;
+}
+
+span.task-list-item-complete {
+    text-decoration: line-through;
+}
+
+li:has(.task-list-item-complete)::before {
+	color: #ff88ff99;
+	content: '☒' !important;
+    text-decoration: none !important;
+    margin-right: 3px !important;
+    margin-left: -1px !important;
+}
+
+span.task-list-item-complete {
+    margin-left: -1px !important;
+	color: #cfaee999;
+}
+
 
 .post-content h1,
 .post-content h2,
@@ -315,7 +421,7 @@ p {
     border-color: var(--button-background);
     background-color: var(--button-background);
     padding: .5rem .75rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .page-link a {
@@ -323,7 +429,7 @@ p {
     border-color: var(--button-background);
     background-color: var(--button-background);
     padding: .5rem .75rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 li.page-item:last-child .page-link {
@@ -401,16 +507,17 @@ header.welcome {
 
 /* VIDEO EMBED RESPONSIVE */
 .video-embed {
-    overflow:hidden;
-    padding-bottom: 56.25%; /* 16:9 */
-    position:relative;
-    height:0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    position: relative;
+    height: 0;
 }
 
-.video-embed iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
+.video-embed iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }

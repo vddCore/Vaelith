@@ -90,7 +90,5 @@ class Disjunction
             $this->emitMetaLine($page);
         }
         echo '</div>';
-
-        echo '<hr style="padding-bottom: 0; margin-bottom: 0;"/>';
     }
 }

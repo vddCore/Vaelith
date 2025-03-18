@@ -58,6 +58,15 @@ echo Bootstrap::formInputHidden(array(
 				'class' => '',
 				'tip' => $L->g('author-can-write-and-edit-their-own-content')
 			));
+			
+			echo '<script>
+			$(document).ready(function () {
+				$("#jsrole").select2({
+					theme: "bootstrap4",
+					minimumResultsForSearch: Infinity
+				});
+			});
+		</script>';
 		}
 
 		echo Bootstrap::formInputText(array(

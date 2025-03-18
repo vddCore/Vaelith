@@ -79,6 +79,14 @@ img.nav-svg-icon {
   margin-right: 0.5rem;
 }
 
+nav ul {
+  list-style: none !important;
+}
+
+nav ul li::before {
+  content: none !important;
+}
+
 nav > div > ul a,
 nav > div > ul a:visited,
 .nav-social > a {
