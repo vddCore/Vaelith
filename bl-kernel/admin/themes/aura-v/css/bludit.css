@@ -1,6 +1,71 @@
 @import url('./fonts/rajdhani.css');
 @import url('./fonts/vermin-vibes-v.css');
 @import url('./fonts/share-tech-mono.css');
+@import url('./fonts/fontello-password.css');
+
+:root {
+  --main-background: #0f0213;
+  --main-foreground: #cfaee9;
+  --list-bullet-foreground: #ff88ff99;
+  --block-background: #200529;
+  --block-foreground: #aa88c4;
+  --navbar-background: #5c116e99;
+  --navbar-border: #dc49f0;
+  --navbar-shadow: #f049d488;
+  --navbar-link: #e473e4;
+  --navbar-link-hover: #ff88ff;
+  --navbar-separator: #73e4af;
+  --table-border: #aa88c4;
+  --table-header-background: #cfaee9;
+  --table-header-foreground: #1e0725;
+  --table-background: #0f0213;
+  --table-even-row-background: #200529;
+  --link: #ee77ee;
+  --link-shadow: #ff88ff88;
+  --link-visited: #ee77ee;
+  --link-hover: #ff88ff;
+  --link-active: #ff88ff;
+  --button-background: #ff88ff;
+  --button-foreground: #200529;
+  --button-border: #ff88ff;
+  --button-hover-background: #200529;
+  --button-hover-foreground: #ff88ff;
+  --button-hover-border: #ff88ff;
+  --button-active-background: #200529;
+  --button-active-foreground: #ff88ff;
+  --button-active-border: #ff88ff;
+  --button-disabled-background: #774477;
+  --button-disabled-foreground: #200529;
+  --button-disabled-border: #774477;
+  --title-foreground: #c96cff;
+  --description-foreground: #6e4288;
+  --post-details-foreground: #804e9c;
+  --text-selection-background: #ff88ff;
+  --text-selection-foreground: #1e0725;
+  --emphasis-foreground: #ddafff;
+  --header-border: #cfaee9;
+  --footer-background: #5c116e99;
+  --alert-note-accent: #ff88ff;
+  --alert-note-accent2: #ff88ff99;
+  --alert-note-background: #ff88ff22;
+  --alert-note-foreground: #ff88ff;
+  --alert-tip-accent: #88f1ff;
+  --alert-tip-accent2: #88f1ff99;
+  --alert-tip-background: #88f1ff22;
+  --alert-tip-foreground: #88f1ff;
+  --alert-important-accent: #88ff92;
+  --alert-important-accent2: #88ff9299;
+  --alert-important-background: #88ff9222;
+  --alert-important-foreground: #88ff92;
+  --alert-warning-accent: #ffcf88;
+  --alert-warning-accent2: #ffcf8899;
+  --alert-warning-background: #ffcf8822;
+  --alert-warning-foreground: #ffcf88;
+  --alert-caution-accent: #ff889c;
+  --alert-caution-accent2: #ff889c99;
+  --alert-caution-background: #ff889c22;
+  --alert-caution-foreground: #ff889c;
+}
 
 ::selection {
 	color: #1e0725;
@@ -58,6 +123,7 @@ td {
 }
 
 input[type="text"],
+input[type="password"],
 textarea {
 	background-color: #0f0213 !important;
 	color: #cfaee9 !important;
@@ -69,11 +135,13 @@ textarea {
 }
 
 input[type="text"]:hover,
+input[type="password"]:hover,
 textarea:hover {
 	border-color: #ff88ff !important;
 }
 
 input[type="text"]:focus,
+input[type="password"]:focus,
 textarea:focus {
 	background-color: #1e0725 !important;
 	border-color: #ff88ff !important;
@@ -81,15 +149,26 @@ textarea:focus {
 }
 
 input[type="text"]::placeholder,
+input[type="password"]::placeholder,
 textarea::placeholder {
 	color: #cfaee988 !important;
 }
 
 input[type="text"]:disabled,
+input[type="password"]:disabled,
 textarea:disabled {
 	background-color: #0f0213 !important;
 	border-color: #663366 !important;
 	color: #dd66dd !important;
+}
+
+input[type="password"] {
+	font-family: "Fontello Password" !important;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-weight: normal !important;
+	text-transform: none !important;
+	letter-spacing: 2px;
 }
 
 textarea {
@@ -104,6 +183,59 @@ code {
 	margin: 0 1px;
 	background: #0f0213;
 	color: #ff88ff88;
+}
+
+.v-checkbox {
+  cursor: pointer;
+	margin-left: 0 !important;
+}
+
+.v-checkbox .label-text {
+	padding-left: 4px !important;
+	vertical-align: middle;
+}
+
+.v-checkbox input {
+  display: none !important;
+}
+
+.v-checkbox svg {
+  overflow: visible;
+	width: 1.5em;
+	height: 2em;
+	padding-right: 2px !important;
+}
+
+.v-checkbox .path {
+  fill: none;
+	stroke: #ff88ff88;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.14s ease-in-out, 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.v-checkbox:hover svg .path {
+	stroke: #ff88ffbb;
+}
+
+.v-checkbox input:checked ~ svg .path {
+  stroke: #ff88ff;
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+
+.v-checkbox input:disabled~svg .path {
+	stroke: #ff88ff66;
+	opacity: 0.6;
+	text-decoration: line-through;
+}
+
+.v-checkbox input:disabled~.label-text {
+	opacity: 0.6;
+	text-decoration: line-through;
 }
 
 /* Prevent events in iframes */
@@ -527,33 +659,51 @@ img.img-thumbnail {
 	color: #cfaee9 !important;
 }
 
-/* 
-input[type="text"]:hover,
-textarea:hover {
-	border-color: #ff88ff !important;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-	background-color: #1e0725 !important;
-	border-color: #ff88ff !important;
-	color: #cfaee9 !important;
-}
-
-input[type="text"]:disabled,
-textarea:disabled {
-	background-color: #0f0213 !important;
-	border-color: #663366 !important;
-	color: #dd66dd !important;
-} */
-
 /*
 	LOGIN
 */
-body.login {
-	background: rgb(255, 255, 255);
-	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(250, 250, 250, 1) 53%);
+.login {
+	background-color: #0f0213 !important; 
 	height: 100%;
+}
+
+.login .login-box {
+	background-color: #150b18 !important;
+	border-color: #ff88ff !important;
+}
+
+.form-check {
+	padding: 0 !important;
+}
+
+.login h1 {
+	cursor: default;
+	color: #ff88ffcc;
+	font-family: "Vermin Vibes V";
+	letter-spacing: 2px;
+	transition: color .15s ease-in-out, text-shadow .15s ease-in-out;
+	margin-top: 1rem !important;
+	padding-bottom: 0;
+	margin-bottom: 0.5rem;
+}
+
+.login h1:hover {
+	text-shadow: 0px 0px 2px #ff88ff;
+}
+
+.login h6 {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-image: linear-gradient(90deg, rgba(0,0,0,0) 25%, rgba(255,136,255,1) 50%, rgba(0,0,0,0) 75%);
+	border-image-slice: 1;
+	color: #ff88ff99;
+	font-family: "Vermin Vibes V";
+	padding-bottom: 1.1rem;
+	padding-top: 0.5rem;
+}
+
+.login .textbox-label {
+	font-size: 1.15rem !important;
 }
 
 /*
@@ -1405,10 +1555,6 @@ img.profilePicture {
 	border-radius: 4px 4px 0px 0px !important;
 }
 
-.tail-writer th {
-	border-radius: 4px 4px 0px 0px !important;
-}
-
 .tail-writer tr:nth-child(even) {
 	background-color: #1e0725 !important;
 }
@@ -1452,6 +1598,48 @@ ol {
 	color: var(--list-bullet-foreground);
 	vertical-align: middle;
 	margin-right: 6px;
+}
+
+.tail-writer section {
+	padding: 12px 0;
+}
+
+.tail-writer caption {
+	text-align: center;
+}
+
+.tail-writer img {
+	max-width: 100%;
+}
+
+.tail-writer pre,
+.tail-writer code {
+	background: #200529 !important;
+	color: #aa88c4 !important;
+}
+
+.tail-writer pre {
+	border-left: 2px solid #aa88c4 !important;
+	padding: 10px !important;
+}
+
+.tail-writer blockquote {
+	padding: 10px 10px 10px 18px !important;
+	margin: 0 0 10px 10px !important;
+	border-left: 5px solid #aa88c4 !important;
+	background-color: #200529 !important;
+	font-style: italic !important;
+}
+
+.tail-writer blockquote p {
+	margin: 0;
+}
+
+.tail-writer code {
+	display: inline-block !important;
+	padding: 0 0.5em !important;
+	line-height: 1.4em !important;
+	border-radius: 3px !important;
 }
 
 .tail-writer ol {
@@ -1520,6 +1708,139 @@ ol {
 .tail-writer-preview {
 	border-top: 1px solid #cfaee988 !important;
 	background-color: #0f0213 !important;
+}
+
+.markdown-alert {
+	padding-left: 10px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	border-left-width: 8px;
+	border-left-style: solid;
+	margin-right: 4px;
+}
+
+.markdown-alert p:not(.markdown-alert-title) {
+	padding-top: 4px;
+	padding-bottom: 3px;
+}
+
+.markdown-alert-title {
+	display: inline-block;
+	vertical-align: middle;
+	text-transform: uppercase;
+	margin-bottom: -4px;
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.markdown-alert-title::before {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -2px;
+	margin-right: 6px;
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900; 
+	font-size: 24px;
+}
+
+.markdown-alert-note {
+	background-color: var(--alert-note-background);
+	border-image: repeating-linear-gradient(
+			70deg,
+			var(--alert-note-accent),
+			var(--alert-note-accent) 4px,
+			var(--alert-note-accent2) 4px,
+			var(--alert-note-accent2) 8px
+	) 2;
+	color: var(--alert-note-foreground);
+}
+
+.markdown-alert-note .markdown-alert-title::before {
+	content: '\F05A';
+}
+
+.markdown-alert-note .markdown-alert-title {
+	color: var(--alert-note-foreground);
+}
+
+.markdown-alert-tip {
+	background-color: var(--alert-tip-background);
+	border-image: repeating-linear-gradient(
+			70deg,
+			var(--alert-tip-accent),
+			var(--alert-tip-accent) 4px,
+			var(--alert-tip-accent2) 4px,
+			var(--alert-tip-accent2) 8px
+	) 2;
+	color: var(--alert-tip-foreground);
+}
+
+.markdown-alert-tip .markdown-alert-title::before {
+	content: '\F12E';
+}
+
+.markdown-alert-important .markdown-alert-title {
+	color: var(--alert-important-foreground);
+}
+
+.markdown-alert-important {
+	background-color: var(--alert-important-background);
+	border-image: repeating-linear-gradient(
+			70deg,
+			var(--alert-important-accent),
+			var(--alert-important-accent) 4px,
+			var(--alert-important-accent2) 4px,
+			var(--alert-important-accent2) 8px
+	) 2;
+	color: var(--alert-important-foreground);
+}
+
+.markdown-alert-important .markdown-alert-title::before {
+	content: '\F00C';
+}
+
+.markdown-alert-important .markdown-alert-title {
+	color: var(--alert-important-foreground);
+}
+
+.markdown-alert-warning {
+	background-color: var(--alert-warning-background);
+	border-image: repeating-linear-gradient(
+			70deg,
+			var(--alert-warning-accent),
+			var(--alert-warning-accent) 4px,
+			var(--alert-warning-accent2) 4px,
+			var(--alert-warning-accent2) 8px
+	) 2;
+	color: var(--alert-warning-foreground);
+}
+
+.markdown-alert-warning .markdown-alert-title::before {
+	content: '\F071';
+}
+
+.markdown-alert-warning .markdown-alert-title {
+	color: var(--alert-warning-foreground);
+}
+
+.markdown-alert-caution {
+	background-color: var(--alert-caution-background);
+	border-image: repeating-linear-gradient(
+			70deg,
+			var(--alert-caution-accent),
+			var(--alert-caution-accent) 4px,
+			var(--alert-caution-accent2) 4px,
+			var(--alert-caution-accent2) 8px
+	) 2;
+	color: var(--alert-caution-foreground);
+}
+
+.markdown-alert-caution .markdown-alert-title::before {
+	content: '\F54C';
+}
+
+.markdown-alert-caution .markdown-alert-title {
+	color: var(--alert-caution-foreground);
 }
 
 .tail-writer textarea {

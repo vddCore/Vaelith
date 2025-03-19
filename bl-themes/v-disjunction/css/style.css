@@ -59,6 +59,135 @@ blockquote p {
     margin: 0;
 }
 
+.markdown-alert {
+    margin-left: -13px;
+    padding-left: 10px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    border-left-width: 8px;
+    border-left-style: solid;
+    margin-right: 4px;
+}
+
+.markdown-alert-title {
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    margin-bottom: -4px;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.markdown-alert-title::before {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-right: 6px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900; 
+    font-size: 24px;
+}
+
+.markdown-alert-note {
+    background-color: var(--alert-note-background);
+    border-image: repeating-linear-gradient(
+        70deg,
+        var(--alert-note-accent),
+        var(--alert-note-accent) 4px,
+        var(--alert-note-accent2) 4px,
+        var(--alert-note-accent2) 8px
+    ) 2;
+    color: var(--alert-note-foreground);
+}
+
+.markdown-alert-note .markdown-alert-title::before {
+    content: '\F05A';
+}
+
+.markdown-alert-note .markdown-alert-title {
+    color: var(--alert-note-foreground);
+}
+
+.markdown-alert-tip {
+    background-color: var(--alert-tip-background);
+    border-image: repeating-linear-gradient(
+        70deg,
+        var(--alert-tip-accent),
+        var(--alert-tip-accent) 4px,
+        var(--alert-tip-accent2) 4px,
+        var(--alert-tip-accent2) 8px
+    ) 2;
+    color: var(--alert-tip-foreground);
+}
+
+.markdown-alert-tip .markdown-alert-title::before {
+    content: '\F12E';
+}
+
+.markdown-alert-important .markdown-alert-title {
+    color: var(--alert-important-foreground);
+}
+
+.markdown-alert-important {
+    background-color: var(--alert-important-background);
+    border-image: repeating-linear-gradient(
+        70deg,
+        var(--alert-important-accent),
+        var(--alert-important-accent) 4px,
+        var(--alert-important-accent2) 4px,
+        var(--alert-important-accent2) 8px
+    ) 2;
+    color: var(--alert-important-foreground);
+}
+
+.markdown-alert-important .markdown-alert-title::before {
+    content: '\F00C';
+}
+
+.markdown-alert-important .markdown-alert-title {
+    color: var(--alert-important-foreground);
+}
+
+.markdown-alert-warning {
+    background-color: var(--alert-warning-background);
+    border-image: repeating-linear-gradient(
+        70deg,
+        var(--alert-warning-accent),
+        var(--alert-warning-accent) 4px,
+        var(--alert-warning-accent2) 4px,
+        var(--alert-warning-accent2) 8px
+    ) 2;
+    color: var(--alert-warning-foreground);
+}
+
+.markdown-alert-warning .markdown-alert-title::before {
+    content: '\F071';
+}
+
+.markdown-alert-warning .markdown-alert-title {
+    color: var(--alert-warning-foreground);
+}
+
+.markdown-alert-caution {
+    background-color: var(--alert-caution-background);
+    border-image: repeating-linear-gradient(
+        70deg,
+        var(--alert-caution-accent),
+        var(--alert-caution-accent) 4px,
+        var(--alert-caution-accent2) 4px,
+        var(--alert-caution-accent2) 8px
+    ) 2;
+    color: var(--alert-caution-foreground);
+}
+
+.markdown-alert-caution .markdown-alert-title::before {
+    content: '\F54C';
+}
+
+.markdown-alert-caution .markdown-alert-title {
+    color: var(--alert-caution-foreground);
+}
+
 code {
     display: inline-block;
     padding: 0 0.5em;
@@ -98,7 +227,7 @@ tr:nth-child(even) {
 }
 
 th {
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 0px;
     line-height: 1rem;
 }
 
@@ -147,6 +276,59 @@ a.post-title-icon img {
 a.post-title-icon:hover {
     color: var(--link-hover);
     filter: drop-shadow(0px 0px 4px var(--link-shadow));
+}
+
+.v-checkbox {
+    cursor: pointer;
+    margin-left: 0 !important;
+}
+
+.v-checkbox .label-text {
+    padding-left: 4px !important;
+    vertical-align: middle;
+}
+
+.v-checkbox input {
+    display: none !important;
+}
+
+.v-checkbox svg {
+    overflow: visible;
+    width: 1.5em;
+    height: 2em;
+    padding-right: 2px !important;
+}
+
+.v-checkbox .path {
+    fill: none;
+    stroke: #ff88ff88;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.14s ease-in-out, 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+}
+
+.v-checkbox:hover svg .path {
+    stroke: #ff88ffbb;
+}
+
+.v-checkbox input:checked~svg .path {
+    stroke: #ff88ff;
+    stroke-dasharray: 70.5096664428711 9999999;
+    stroke-dashoffset: -262.2723388671875;
+}
+
+.v-checkbox input:disabled~svg .path {
+    stroke: #ff88ff66;
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.v-checkbox input:disabled~.label-text {
+    opacity: 0.6;
+    text-decoration: line-through;
 }
 
 .icon-label {
@@ -222,7 +404,8 @@ h3.title {
     font-size: 1.4rem;
 }
 
-ul, ol {
+ul,
+ol {
     font-size: 1.1rem;
     margin: 0 0.25rem;
     padding: 0;
@@ -245,22 +428,22 @@ ol {
     padding-left: 1.25rem;
 }
 
-ol > li > ol {
+ol>li>ol {
     list-style: decimal !important;
     padding-left: 1.25rem;
 }
 
-ol > li > ol > li > ol {
+ol>li>ol>li>ol {
     list-style: lower-latin !important;
     padding-left: 1.25rem;
 }
 
-ol > li > ol > li > ol > li > ol {
+ol>li>ol>li>ol>li>ol {
     list-style: lower-greek !important;
     padding-left: 1.25rem;
 }
 
-ol > li > ol > li > ol > li > ol > li > ol {
+ol>li>ol>li>ol>li>ol>li>ol {
     list-style: armenian !important;
     padding-left: 1.25rem;
 }
@@ -278,8 +461,8 @@ span.task-list-item {
 }
 
 span.task-list-item::before {
-	color: #ff88ff99;
-	content: '☐' !important;
+    color: #ff88ff99;
+    content: '☐' !important;
     padding-right: 6px !important;
 }
 
@@ -288,8 +471,8 @@ span.task-list-item-complete {
 }
 
 li:has(.task-list-item-complete)::before {
-	color: #ff88ff99;
-	content: '☒' !important;
+    color: #ff88ff99;
+    content: '☒' !important;
     text-decoration: none !important;
     margin-right: 3px !important;
     margin-left: -1px !important;
@@ -297,7 +480,7 @@ li:has(.task-list-item-complete)::before {
 
 span.task-list-item-complete {
     margin-left: -1px !important;
-	color: #cfaee999;
+    color: #cfaee999;
 }
 
 

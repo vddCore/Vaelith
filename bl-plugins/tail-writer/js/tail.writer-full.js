@@ -809,7 +809,8 @@
                 ghCodeBlock: true,
                 tasklists: true,
                 emoji: true,
-                moreStyling: true
+                moreStyling: true,
+                extensions: ['ghAlerts']
             });
             converter.setFlavor("github");
             content = converter.makeHtml(content);

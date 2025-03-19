@@ -6,7 +6,7 @@
 	</li>
 
 	<li class="nav-item">
-		<a class="nav-link" href="<?php echo HTML_PATH_ADMIN_ROOT.'dashboard' ?>"><span class="fa fa-dashboard"></span><span class="nav-label"><?php $L->p('Dashboard') ?></span></a>
+		<a class="nav-link" href="<?php echo HTML_PATH_ADMIN_ROOT.'dashboard' ?>"><span class="fa fa-heartbeat"></span><span class="nav-label"><?php $L->p('Dashboard') ?></span></a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" target="_blank" href="<?php echo HTML_PATH_ROOT ?>"><span class="fa fa-home"></span><span class="nav-label"><?php $L->p('Website') ?></span></a>
@@ -48,7 +48,7 @@
 		<h4><?php $L->p('Settings') ?></h4>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="<?php echo HTML_PATH_ADMIN_ROOT.'settings' ?>"><span class="fa fa-gear"></span><span class="nav-label"><?php $L->p('General') ?></span></a>
+		<a class="nav-link" href="<?php echo HTML_PATH_ADMIN_ROOT.'settings' ?>"><span class="fa fa-cog"></span><span class="nav-label"><?php $L->p('General') ?></span></a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" href="<?php echo HTML_PATH_ADMIN_ROOT.'plugins' ?>"><span class="fa fa-puzzle-piece"></span><span class="nav-label"><?php $L->p('Plugins') ?></span></a>

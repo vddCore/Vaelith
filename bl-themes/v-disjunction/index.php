@@ -12,6 +12,7 @@
 	
 	<?php echo Theme::cssBootstrap(); ?>
 	<?php echo Theme::css('css/style.css'); ?>
+	<?php echo Theme::cssLineAwesome(); ?>
 	
 	<?php Theme::plugins('siteHead'); ?>
 </head>

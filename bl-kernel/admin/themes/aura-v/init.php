@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__."/v-extensions.php";
+
 class Bootstrap {
 
 	public static function modal($args) {

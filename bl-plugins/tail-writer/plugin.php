@@ -85,6 +85,7 @@
 				</style>
 
 				<script type="text/javascript" src="<?php echo $this->htmlPath(); ?>js/showdown.js"></script>
+				<script type="text/javascript" src="<?php echo $this->htmlPath(); ?>js/showdown.ghalerts.js"></script>
 				<script type="text/javascript" src="<?php echo $this->htmlPath(); ?>js/tail.writer-full.js"></script>
 				<script type="text/javascript">
 					tail.writer.hook("init", "bludit", function(){

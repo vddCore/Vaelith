@@ -39,7 +39,7 @@
 
   <div class="container">
     <div class="row justify-content-md-center pt-5">
-      <div class="col-md-4 mt-5 p-5 shadow-sm bg-white rounded border">
+      <div class="login-box col-md-4 mt-5 p-5 shadow-sm bg-white rounded border">
         <?php
         if (Sanitize::pathFile(PATH_ADMIN_VIEWS, $layout['view'] . '.php')) {
           include(PATH_ADMIN_VIEWS . $layout['view'] . '.php');

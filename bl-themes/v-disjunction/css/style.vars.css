@@ -40,4 +40,24 @@
   --emphasis-foreground: #ddafff;
   --header-border: #cfaee9;
   --footer-background: #5c116e99;
+  --alert-note-accent: #ff88ff;
+  --alert-note-accent2: #ff88ff99;
+  --alert-note-background: #ff88ff22;
+  --alert-note-foreground: #ff88ff;
+  --alert-tip-accent: #88f1ff;
+  --alert-tip-accent2: #88f1ff99;
+  --alert-tip-background: #88f1ff22;
+  --alert-tip-foreground: #88f1ff;
+  --alert-important-accent: #88ff92;
+  --alert-important-accent2: #88ff9299;
+  --alert-important-background: #88ff9222;
+  --alert-important-foreground: #88ff92;
+  --alert-warning-accent: #ffcf88;
+  --alert-warning-accent2: #ffcf8899;
+  --alert-warning-background: #ffcf8822;
+  --alert-warning-foreground: #ffcf88;
+  --alert-caution-accent: #ff889c;
+  --alert-caution-accent2: #ff889c99;
+  --alert-caution-background: #ff889c22;
+  --alert-caution-foreground: #ff889c;
 }
