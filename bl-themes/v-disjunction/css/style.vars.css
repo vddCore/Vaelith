@@ -1,6 +1,8 @@
 :root {
   --main-background: #0f0213;
   --main-foreground: #cfaee9;
+  --scrollbar-background: #0f0213;
+  --scrollbar-foreground: #ff88ff;
   --list-bullet-foreground: #ff88ff99;
   --block-background: #200529;
   --block-foreground: #aa88c4;
@@ -35,6 +37,7 @@
   --title-foreground: #c96cff;
   --description-foreground: #6e4288;
   --post-details-foreground: #804e9c;
+  --post-details-accent: #ff88ff99;
   --text-selection-background: #ff88ff;
   --text-selection-foreground: #1e0725;
   --emphasis-foreground: #ddafff;

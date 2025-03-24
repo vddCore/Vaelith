@@ -49,14 +49,14 @@ echo Bootstrap::formInputHidden(array(
 <!-- TOOLBAR -->
 <div id="jseditorToolbar" class="mb-1">
 	<div id="jseditorToolbarRight" class="btn-group btn-group-sm float-right" role="group" aria-label="Toolbar right">
-		<button type="button" class="btn btn-light" id="jsmediaManagerOpenModal" data-toggle="modal" data-target="#jsmediaManagerModal"><span class="fa fa-image"></span> <?php $L->p('Images') ?></button>
-		<button type="button" class="btn btn-light" id="jsoptionsSidebar" style="z-index:30"><span class="fa fa-cog"></span> <?php $L->p('Options') ?></button>
+		<button type="button" class="btn btn-secondary" id="jsmediaManagerOpenModal" data-toggle="modal" data-target="#jsmediaManagerModal"><span class="fa fa-image"></span> <?php $L->p('Images') ?></button>
+		<button type="button" class="btn btn-secondary" id="jsoptionsSidebar" style="z-index:30"><span class="fa fa-cog"></span> <?php $L->p('Options') ?></button>
 	</div>
 
 	<div id="jseditorToolbarLeft">
 		<button type="button" class="btn btn-sm btn-primary" id="jsbuttonSave"><?php echo $L->g('Save') ?></button>
 		<button id="jsbuttonPreview" type="button" class="btn btn-sm btn-secondary"><?php $L->p('Preview') ?></button>
-		<span id="jsswitchButton" data-switch="<?php echo ($page->draft() ? 'draft' : 'publish') ?>" class="ml-2 text-secondary switch-button"><i class="fa fa-square switch-icon-<?php echo ($page->draft() ? 'draft' : 'publish') ?>"></i> <?php echo ($page->draft() ? $L->g('Draft') : $L->g('Publish')) ?></span>
+		<span id="jsswitchButton" data-switch="<?php echo ($page->draft() ? 'draft' : 'publish') ?>" class="switch-button"><i class="fa fa-square switch-icon-<?php echo ($page->draft() ? 'draft' : 'publish') ?>"></i> <?php echo ($page->draft() ? $L->g('Draft') : $L->g('Publish')) ?></span>
 	</div>
 
 	<?php if ($page->scheduled()) : ?>
@@ -90,7 +90,7 @@ echo Bootstrap::formInputHidden(array(
 		</div>
 	</nav>
 
-	<div class="tab-content pr-3 pl-3 pb-3">
+	<div class="tab-content">
 		<div id="nav-general" class="tab-pane fade show active" role="tabpanel" aria-labelledby="general-tab">
 			<?php
 			// Category
@@ -102,6 +102,15 @@ echo Bootstrap::formInputHidden(array(
 				'emptyOption' => '- ' . $L->g('Uncategorized') . ' -',
 				'options' => $categories->getKeyNameArray()
 			));
+
+			echo '<script>
+				$(document).ready(function () {
+					$("#jscategory").select2({
+						theme: "bootstrap4",
+						minimumResultsForSearch: Infinity
+					});
+				});
+			</script>';
 
 			// Description
 			echo Bootstrap::formTextareaBlock(array(
@@ -172,6 +181,15 @@ echo Bootstrap::formInputHidden(array(
 				),
 				'tip' => ''
 			));
+
+			echo '<script>
+				$(document).ready(function () {
+					$("#jstypeSelector").select2({
+						theme: "bootstrap4",
+						minimumResultsForSearch: Infinity
+					});
+				});
+			</script>';
 
 			// Position
 			echo Bootstrap::formInputTextBlock(array(
@@ -281,11 +299,6 @@ echo Bootstrap::formInputHidden(array(
 					$("#jsexternalCoverImage").change(function() {
 						$("#jscoverImage").val($(this).val());
 					});
-
-					// Datepicker
-					$("#jsdate").datetimepicker({
-						format: DB_DATE_FORMAT
-					});
 				});
 			</script>
 		</div>
@@ -331,35 +344,30 @@ echo Bootstrap::formInputHidden(array(
 				'value' => $page->slug()
 			));
 
-			// Robots
-			echo Bootstrap::formCheckbox(array(
+			echo '<div class="form-group">';
+			echo '<label class="mt-4 mb-2 pb-2 border-bottom text-uppercase w-100">' . $L->g('Robots') . '</label>';
+
+			echo vAdminExtensions::vCheckBox(array(
 				'name' => 'noindex',
-				'label' => 'Robots',
-				'labelForCheckbox' => $L->g('apply-code-noindex-code-to-this-page'),
-				'placeholder' => '',
+				'label' => $L->g('apply-code-noindex-code-to-this-page'),
 				'checked' => $page->noindex(),
 				'tip' => $L->g('This tells search engines not to show this page in their search results.')
 			));
 
-			// Robots
-			echo Bootstrap::formCheckbox(array(
+			echo vAdminExtensions::vCheckBox(array(
 				'name' => 'nofollow',
-				'label' => '',
-				'labelForCheckbox' => $L->g('apply-code-nofollow-code-to-this-page'),
-				'placeholder' => '',
+				'label' => $L->g('apply-code-nofollow-code-to-this-page'),
 				'checked' => $page->nofollow(),
 				'tip' => $L->g('This tells search engines not to follow links on this page.')
 			));
 
-			// Robots
-			echo Bootstrap::formCheckbox(array(
+			echo vAdminExtensions::vCheckBox(array(
 				'name' => 'noarchive',
-				'label' => '',
-				'labelForCheckbox' => $L->g('apply-code-noarchive-code-to-this-page'),
-				'placeholder' => '',
+				'label' => $L->g('apply-code-noarchive-code-to-this-page'),
 				'checked' => $page->noarchive(),
 				'tip' => $L->g('This tells search engines not to save a cached copy of this page.')
 			));
+			echo '</div>';
 			?>
 		</div>
 	</div>
@@ -463,7 +471,7 @@ foreach ($customFields as $field => $options) {
 </div>
 
 <!-- Modal for Media Manager -->
-<?php include(PATH_ADMIN_THEMES . 'booty/html/media.php'); ?>
+<?php include(PATH_ADMIN_THEMES . $site->adminTheme() . '/html/media.php'); ?>
 
 <script>
 	$(document).ready(function() {

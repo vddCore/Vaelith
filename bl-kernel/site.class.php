@@ -11,8 +11,8 @@ class Site extends dbJSON
 		'language' =>		'en',
 		'locale' =>		'en, en_US, en_AU, en_CA, en_GB, en_IE, en_NZ',
 		'timezone' =>		'America/Argentina/Buenos_Aires',
-		'theme' =>		'alternative',
-		'adminTheme' =>		'booty',
+		'theme' =>		'vDisjunction',
+		'adminTheme' =>		'aura-v',
 		'homepage' =>		'',
 		'pageNotFound' =>	'',
 		'uriPage' =>		'/',
@@ -298,6 +298,11 @@ class Site extends dbJSON
 	public function titleFormatTag()
 	{
 		return $this->getField('titleFormatTag');
+	}
+
+	public function uriTag()
+	{
+		return $this->getField('uriTag');
 	}
 
 	// Returns the absolute URL of the site logo

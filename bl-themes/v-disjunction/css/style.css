@@ -9,7 +9,13 @@
     background-color: var(--text-selection-background);
 }
 
+::-webkit-scrollbar {
+    background-color: var(--scrollbar-background);
+    color: var(--scrollbar-foreground);
+}
+
 html {
+	scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
     position: relative;
     min-height: 100%;
 }
@@ -60,13 +66,9 @@ blockquote p {
 }
 
 .markdown-alert {
-    margin-left: -13px;
-    padding-left: 10px;
-    margin-bottom: 4px;
-    margin-top: 4px;
-    border-left-width: 8px;
-    border-left-style: solid;
-    margin-right: 4px;
+    margin: 4px 4px 4px -13px;
+    padding: 0 10px;
+    border-left: 8px solid;
 }
 
 .markdown-alert-title {
@@ -124,6 +126,11 @@ blockquote p {
     content: '\F12E';
 }
 
+.markdown-alert-tip ::selection {
+    color: var(--text-selection-foreground) !important;
+    background-color: var(--alert-tip-foreground) !important;
+}
+
 .markdown-alert-important .markdown-alert-title {
     color: var(--alert-important-foreground);
 }
@@ -148,6 +155,11 @@ blockquote p {
     color: var(--alert-important-foreground);
 }
 
+.markdown-alert-important ::selection {
+    color: var(--text-selection-foreground) !important;
+    background-color: var(--alert-important-foreground) !important;
+}
+
 .markdown-alert-warning {
     background-color: var(--alert-warning-background);
     border-image: repeating-linear-gradient(
@@ -168,6 +180,11 @@ blockquote p {
     color: var(--alert-warning-foreground);
 }
 
+.markdown-alert-warning ::selection {
+    color: var(--text-selection-foreground) !important;
+    background-color: var(--alert-warning-foreground) !important;
+}
+
 .markdown-alert-caution {
     background-color: var(--alert-caution-background);
     border-image: repeating-linear-gradient(
@@ -186,6 +203,11 @@ blockquote p {
 
 .markdown-alert-caution .markdown-alert-title {
     color: var(--alert-caution-foreground);
+}
+
+.markdown-alert-caution ::selection {
+    color: var(--text-selection-foreground) !important;
+    background-color: var(--alert-caution-foreground) !important;
 }
 
 code {
@@ -580,6 +602,29 @@ p {
     border-top: 1px dotted var(--post-details-foreground);
     margin-top: auto;
     align-self: end;
+}
+
+.meta-author {
+    color: var(--post-details-accent);
+}
+
+.meta-author::after {
+    color: var(--post-details-foreground);
+    content: ' // ';
+}
+
+.meta-tags {
+    display: inline-block;
+}
+
+.meta-tags a:not(:last-of-type)::after {
+    content: ', ';
+    color: var(--post-details-accent);
+}
+
+.meta-tags::before {
+    margin-left: 4px;
+    content: '// ';
 }
 
 .read-more {

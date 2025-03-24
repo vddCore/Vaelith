@@ -4,6 +4,7 @@ class vAdminExtensions {
 		$name = $args['name'];
 		$id = 'js'.$name;
     $labelText = $args['label'];
+    $tipElement = isset($args['tip']) ? "<small class='form-text text-muted' style='margin-top: -8px;'>".$args['tip']."</small>" : '';
 
 		if (isset($args['id'])) {
 			$id = $args['id'];
@@ -15,8 +16,13 @@ class vAdminExtensions {
 			$labelClass = $args['labelClass'];
 		}
 
-		$checked = isset($args['checked'])?'checked':'';
-		$value = $checked?'1':'0';
+		$checked = '';
+    
+    if(isset($args['checked'])) {
+      if ($args['checked']) {
+        $checked = 'checked';
+      }
+    }
 
 return <<<EOF
   <div class="form-check">
@@ -28,6 +34,7 @@ return <<<EOF
 
       <span class="label-text">$labelText</span>
     </label>
+    $tipElement
   </div>
 EOF;
   }

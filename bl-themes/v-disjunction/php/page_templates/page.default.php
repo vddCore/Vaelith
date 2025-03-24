@@ -33,11 +33,9 @@
                 </div>
 
                 <div class="post-sub">
-                    <p class="meta">
                         <?php if(!($page->isStatic())) {
-                            $lib->emitMetaData($page);
+                            $lib->emitMetaLine($page);
                         }?>
-                    </p>
                 </div>
 
                 <?php Theme::plugins('pageEnd'); ?>

@@ -27,6 +27,7 @@
 			case 'home': include(THEME_DIR_PHP.'home.php'); break;
 			case 'page': include(THEME_DIR_PHP.'page.php'); break;
 			case 'category': include(THEME_DIR_PHP.'category.php'); break;
+			case 'tag': include(THEME_DIR_PHP.'tag.php'); break;
 			default: {
 				echo "<center>Unhandled page <b>$WHERE_AM_I</b>.</center>";
 				break;

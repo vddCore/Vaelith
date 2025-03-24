@@ -419,7 +419,7 @@ foreach ($customFields as $field => $options) {
 </form>
 
 <!-- Modal for Media Manager -->
-<?php include(PATH_ADMIN_THEMES . 'booty/html/media.php'); ?>
+<?php include(PATH_ADMIN_THEMES . $site->adminTheme() . '/html/media.php'); ?>
 
 <script>
 	$(document).ready(function() {

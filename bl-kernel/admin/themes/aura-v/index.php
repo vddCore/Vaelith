@@ -20,7 +20,6 @@
 		), DOMAIN_CORE_CSS);
 		echo Theme::css(array(
 			'bludit.css',
-			'bludit.bootstrap.css'
 		), DOMAIN_ADMIN_THEME_CSS);
 	?>
 

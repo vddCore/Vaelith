@@ -132,13 +132,11 @@ class Page {
 		return Date::format($dateRaw, DB_DATE_FORMAT, $format);
 	}
 
-	// Returns the username who created the page
 	public function username()
 	{
 		return $this->getValue('username');
 	}
 
-	// TODO: Check if necessary this function
 	public function getDB()
 	{
 		return $this->vars;

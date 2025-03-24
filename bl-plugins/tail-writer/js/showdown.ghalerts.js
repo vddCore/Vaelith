@@ -5,6 +5,7 @@
     return [
       {
         type: 'output',
+
         filter: function (text, converter, options) {
           return text.replace(
             /<blockquote>\s*<p>\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*<br\s*\/?>\s*([\s\S]*?)<\/p>\s*<\/blockquote>/g,

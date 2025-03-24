@@ -62,6 +62,8 @@ $numberOfPages = count($listOfFilesByPage);
 
 <script>
 
+let jsMediaPageActiveNumber = 1;
+
 <?php
 echo 'var preLoadFiles = '.json_encode($preLoadFiles).';';
 ?>
@@ -103,24 +105,28 @@ function displayFiles(files, numberOfPages = <?= $numberOfPages ?>) {
 			var image = "<?php echo PAGE_IMAGES_URL; ?>"+filename;
 
 			tableRow = '<tr id="js'+filename+'">'+
-					'<td style="width:80px"><img class="img-thumbnail" alt="200x200" src="'+thumbnail+'" style="width: 50px; height: 50px;"><\/td>'+
+					'<td><img class="img-thumbnail" alt="200x200" src="'+thumbnail+'" style="width: 50px; height: 50px;"><\/td>'+
 					'<td class="information">'+
-						'<div class="text-secondary pb-2">'+filename+'<\/div>'+
-						'<div>'+
-							'<a href="#" class="mr-3 text-primary" onClick="editorInsertMedia(\''+image+'\'); closeMediaManager();"><i class="fa fa-plus-circle"></i><?php $L->p('Insert') ?><\/a>'+
-							'<a href="#" class="mr-3 text-primary" onClick="editorInsertMedia(\''+thumbnail+'\'); closeMediaManager();"><i class="fa fa-image"></i><?php $L->p('Insert thumbnail') ?><\/a>'+
-							'<a href="#" class="mr-3 text-primary" onClick="editorInsertLinkedMedia(\''+thumbnail+'\',\''+image+'\'); closeMediaManager();"><i class="fa fa-link"></i><?php $L->p('Insert linked thumbnail') ?><\/a>'+
-							'<a href="#" class="text-primary" onClick="setCoverImage(\''+filename+'\'); closeMediaManager();"><i class="fa fa-desktop"></i><?php $L->p('Set as cover image') ?><\/button>'+
-							'<a href="#" class="float-right text-danger" onClick="deleteMedia(\''+filename+'\')"><i class="fa fa-trash-o"></i><?php $L->p('Delete') ?><\/a>'+
+						'<div class="file-name">'+filename+'<\/div>'+
+						'<div class="media-toolbar">'+
+							'<a href="#" class="btn btn-link" onClick="editorInsertMedia(\''+image+'\'); closeMediaManager();"><i class="fa fa-plus-circle"></i><?php $L->p('Insert') ?><\/a>'+
+							'<a href="#" class="btn btn-link" onClick="editorInsertMedia(\''+thumbnail+'\'); closeMediaManager();"><i class="fa fa-image"></i><?php $L->p('Insert thumbnail') ?><\/a>'+
+							'<a href="#" class="btn btn-link" onClick="editorInsertLinkedMedia(\''+thumbnail+'\',\''+image+'\'); closeMediaManager();"><i class="fa fa-link"></i><?php $L->p('Insert linked thumbnail') ?><\/a>'+
+							'<a href="#" class="btn btn-link" onClick="setCoverImage(\''+filename+'\'); closeMediaManager();"><i class="fa fa-desktop"></i><?php $L->p('Set as cover image') ?><\/button>'+
+							'<a href="#" class="btn btn-link" onClick="deleteMedia(\''+filename+'\')"><i class="fa fa-trash"></i><?php $L->p('Delete') ?><\/a>'+
 						'<\/div>'+
 					'<\/td>'+
 				'<\/tr>';
 			$('#jsbluditMediaTable').append(tableRow);
 		});
 
-		mediaPagination = '<ul class="pagination justify-content-center flex-wrap">';
+		let mediaPagination = '<ul class="pagination justify-content-center flex-wrap"><li class="page-item">';
 		for (var i = 1; i <= numberOfPages; i++) {
-			mediaPagination += '<li class="page-item"><button type="button" class="btn btn-link page-link" onClick="getFiles('+i+')">'+i+'</button></li>';
+			if (i == jsMediaPageActiveNumber) {
+				mediaPagination += '<button type="button" class="btn btn-link page-link active" onClick="getFiles('+i+'); setActive('+i+');">'+i+'</button></li>';
+			} else {
+				mediaPagination += '<button type="button" class="btn btn-link page-link" onClick="getFiles('+i+'); setActive('+i+');">'+i+'</button></li>';
+			}
 		}
 		mediaPagination += '</ul>';
 		$('#jsbluditMediaTablePagination').html(mediaPagination);
@@ -133,7 +139,10 @@ function displayFiles(files, numberOfPages = <?= $numberOfPages ?>) {
 	}
 }
 
-// Get the list of files via AJAX, filter by the page number
+function setActive(i) { 
+	jsMediaPageActiveNumber = i;
+ }
+
 function getFiles(pageNumber) {
 	$.post(HTML_PATH_ADMIN_ROOT+"ajax/list-images",
 		{ 	tokenCSRF: tokenCSRF,

@@ -4,13 +4,16 @@ class Disjunction
 {
     private $L;
     private $login;
+    private $site;
 
     public function __construct()
     {
         global $L;
+        global $site;
 
         $this->L = $L;
         $this->login = new Login();
+        $this->site = $site;
     }
 
     public function canEditPosts(): bool
@@ -21,6 +24,21 @@ class Disjunction
             && ($role  === 'admin'
                 || $role === 'author'
                 || $role === 'editor');
+    }
+
+    public function emitTagList($page)
+    {
+        $tags = $page->tags(true);
+
+        if (!empty($tags)) {
+            echo "<div class='meta-tags'>";
+
+            foreach ($tags as $key => $tag) {
+                echo "<a class='tag' href='" . DOMAIN_BASE . ltrim($this->site->uriTag(), '/') . $tag . "'>" . $tag . "</a>";
+            }
+
+            echo "</div>";
+        }
     }
 
     public function emitCategoryLink($page)
@@ -35,8 +53,10 @@ class Disjunction
     public function emitMetaData($page)
     {
         echo '<span class="meta-inner">';
-        echo $page->user('nickname') . ' - ' . $page->date();
+        echo '<span class="meta-author">' . $page->user('nickname') . '</span>';
+        echo '<span class="meta-date">' . $page->date() . '</span>';
         $this->emitCategoryLink($page);
+        $this->emitTagList($page);
         echo '</span>';
     }
 
